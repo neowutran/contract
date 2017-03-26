@@ -6,10 +6,10 @@ module.exports = function Contract(dispatch){
         enabled = true;
         slash.print('[contract] enabled - waiting for next contract')
     })
-    dispatch.hook('sRequestContract', (event) => {
+    dispatch.hook('S_REQUEST_CONTRACT', 1, (event) => {
         if(!enabled) return;
         slash.print('[contract] forcing contract accept')
-        dispatch.toServer('cAcceptContract', {
+        dispatch.toServer('C_ACCEPT_CONTRACT', 1, {
             type: event.type,
             id: event.id
         })
